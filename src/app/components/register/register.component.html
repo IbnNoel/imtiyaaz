@@ -1,0 +1,13 @@
+<div class="form-container">
+  <a routerLink="/login" id="goback">Go back</a>
+  <h2>Join now</h2>
+  <span class="error" *ngIf="error" [@fallIn]='state'{{ error }}></span>
+  <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+    <input type="text" placeholder="First Name" (ngModel)="FirstName" name="FirstName" class="txt" required>
+    <input type="text" placeholder="Last Name" (ngModel)="LastName" name="LastName" class="txt" required>
+    <input type="text" placeholder="Address" (ngModel)="Address" name="Address" class="txt" required>
+    <input type="text" placeholder="Address Line 2" (ngModel)="Address2" name="Address2" class="txt" required>
+    <input type="text" placeholder="Post Code" (ngModel)="PostCode" name="PostCode" class="txt" required>
+    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Submit</button>
+  </form>
+</div>

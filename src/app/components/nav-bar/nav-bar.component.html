@@ -1,0 +1,11 @@
+<nav *ngIf="loggedIn" class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <a class="navbar-brand" (click)="logOut()">Log out</a>
+  
+</nav>

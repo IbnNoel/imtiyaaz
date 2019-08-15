@@ -1,0 +1,7 @@
+<div class="form-container" id="toolbar">
+  <header [@fallIn]="state">
+  </header>
+  <div id="page" [@moveInLeft]="state">
+    <h2 *ngIf="userInfo | async as info">Hey {{ info.FirstName }} </h2>
+  </div>
+</div>
