@@ -7,6 +7,13 @@ import { from, Observable } from 'rxjs';
 import { map, tap, mergeMap, flatMap, switchMap } from 'rxjs/operators';
 import { UserInfo } from 'src/app/dataModels/userInfo';
 
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
+
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
@@ -40,5 +47,16 @@ export class MembersComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  tiles: Tile[] = [
+    {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
+        {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
+  ];
 
 }

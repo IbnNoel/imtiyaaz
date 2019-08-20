@@ -19,6 +19,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RegisterComponent } from './components/register/register.component';
 import { UserService } from './services/data/user.service';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     DataBaseModuleModule,
     BrowserAnimationsModule,
     FormsModule,
+    MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     routes
   ],
