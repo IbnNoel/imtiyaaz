@@ -6,6 +6,9 @@ import { Promise } from 'q';
 import { from, Observable } from 'rxjs';
 import { map, tap, mergeMap, flatMap, switchMap } from 'rxjs/operators';
 import { UserInfo } from 'src/app/dataModels/userInfo';
+import { CollectionService } from 'src/app/services/data/collection.service';
+import { Collection } from 'src/app/dataModels/collection';
+import { Book } from 'src/app/dataModels/iCollection';
 
 export interface Tile {
   color: string;
@@ -24,15 +27,26 @@ export interface Tile {
 export class MembersComponent implements OnInit {
   state: string = '';
   user: any;
+  collection: Observable<Collection>;
 
   userInfo: Observable<UserInfo> = new Observable<UserInfo>();
 
-  constructor(private userService: UserService, private router: Router) { 
+  constructor(private userService: UserService, private router: Router, private collectionService: CollectionService) { 
+    this.collection =  this.collectionService.collection;
     this.userInfo = from(this.userService.getUser())
     .pipe(
       switchMap(user => from(this.userService.getUserDetails(user.uid))),
       map(info => info.payload.toJSON() as UserInfo)
     );
+  }
+
+  intToArray(numb){
+    return Array(numb).fill(0).map((x,i)=>i);
+  }
+
+  enterBook(book:Book){
+    debugger;
+    this.router.navigate(['/book',{ title: book.info.title, author: book.info.author} ]);
   }
   
   private handleExistingUser = (existingUser) => {
@@ -47,16 +61,4 @@ export class MembersComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  tiles: Tile[] = [
-    {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-        {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-  ];
-
 }

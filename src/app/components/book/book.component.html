@@ -1,0 +1,6 @@
+<mat-grid-list cols="3" rowHeight="200px">
+    <mat-grid-tile
+    *ngFor="let lesson of lessons$ | async; index as i"
+    [colspan]="1"
+    [rowspan]="1"> {{ i + 1}}</mat-grid-tile>
+</mat-grid-list>

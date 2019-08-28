@@ -20,6 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserService } from './services/data/user.service';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MaterialModule } from './modules/material/material.module';
+import { CollectionService } from './services/data/collection.service';
+import { BookComponent } from './components/book/book.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MaterialModule } from './modules/material/material.module';
     SignupComponent,
     MembersComponent,
     RegisterComponent,
-    NavBarComponent
+    NavBarComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { MaterialModule } from './modules/material/material.module';
   ],
   providers: [
     AuthGuardService,
+    CollectionService,
     UserService],
   bootstrap: [AppComponent]
 })
